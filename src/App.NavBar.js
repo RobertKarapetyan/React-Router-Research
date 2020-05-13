@@ -28,7 +28,9 @@ export default class NavigationBar extends React.Component {
         let links = this.state.pages.map((page) => {
             return (
                 <li key={page.Name} className="nav-item nav-link">
-                    <Link to={page.Path}>{page.Name}</Link>
+                    <Link to={page.Path}>
+                        <span style={{ color: "white" }}>{page.Name}</span>{" "}
+                    </Link>
                 </li>
             );
         });

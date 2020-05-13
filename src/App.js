@@ -1,7 +1,7 @@
 import React from "react";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import Home from "./Components/Home";
-import One from "./Components/One";
+import Inputform from "./Components/InputForm";
 import Two from "./Components/Two";
 import Three from "./Components/Three";
 import NavigationBar from "./App.NavBar";
@@ -14,7 +14,7 @@ export default class App extends React.Component {
         this.state = {
             pages: [
                 { Name: "Home", Path: "/", component: Home },
-                { Name: "One", Path: "/One", component: One },
+                { Name: "Input Form", Path: "/One", component: Inputform },
                 { Name: "Two", Path: "/Two", component: Two },
                 { Name: "Three", Path: "/Three", component: Three },
             ],
