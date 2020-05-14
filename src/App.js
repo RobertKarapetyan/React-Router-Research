@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import { Switch, Route } from "react-router-dom";
 import Home from "./Components/Home";
 import Inputform from "./Components/InputForm";
 import Two from "./Components/Two";
@@ -7,6 +7,8 @@ import Three from "./Components/Three";
 import NavigationBar from "./App.NavBar";
 import Footer from "./App.Footer";
 import NotFound from "./App.NotFound";
+import Child1 from "./Components/Child1";
+import Child2 from "./Components/Child2";
 
 export default class App extends React.Component {
     constructor(props) {
@@ -20,8 +22,8 @@ export default class App extends React.Component {
                     Path: "/InputForm",
                     component: Inputform,
                 },
-                { Name: "Two", Path: "/Two", component: Two },
-                { Name: "Three", Path: "/Three", component: Three },
+                { Name: "Two", Path: "/two", component: Two },
+                { Name: "Three", Path: "/three", component: Three },
             ],
         };
     }
@@ -43,7 +45,7 @@ export default class App extends React.Component {
                     key={page.Name}
                     path={page.Path}
                     exact
-                    children={<page.component />}
+                    render={(props) => <page.component {...props} />}
                 />
             );
         });
@@ -51,7 +53,20 @@ export default class App extends React.Component {
         let result = (
             <Switch>
                 {routes}
-                <Route children={<NotFound />} />
+
+                <Route
+                    exact
+                    path="/two/child1"
+                    render={(props) => <Child1 {...props} />}
+                />
+
+                <Route
+                    exact
+                    path="/two/child2"
+                    render={(props) => <Child2 {...props} />}
+                />
+
+                <Route exact children={<NotFound />} />
             </Switch>
         );
 
