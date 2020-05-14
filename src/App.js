@@ -6,6 +6,7 @@ import Two from "./Components/Two";
 import Three from "./Components/Three";
 import NavigationBar from "./App.NavBar";
 import Footer from "./App.Footer";
+import NotFound from "./App.NotFound";
 
 export default class App extends React.Component {
     constructor(props) {
@@ -14,7 +15,11 @@ export default class App extends React.Component {
         this.state = {
             pages: [
                 { Name: "Home", Path: "/", component: Home },
-                { Name: "Input Form", Path: "/One", component: Inputform },
+                {
+                    Name: "Input Form",
+                    Path: "/InputForm",
+                    component: Inputform,
+                },
                 { Name: "Two", Path: "/Two", component: Two },
                 { Name: "Three", Path: "/Three", component: Three },
             ],
@@ -43,7 +48,12 @@ export default class App extends React.Component {
             );
         });
 
-        let result = <Switch>{routes}</Switch>;
+        let result = (
+            <Switch>
+                {routes}
+                <Route children={<NotFound />} />
+            </Switch>
+        );
 
         return result;
     }
