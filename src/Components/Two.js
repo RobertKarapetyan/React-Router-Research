@@ -17,7 +17,7 @@ export default class Two extends React.Component {
                             state: { header: "Hello from Child 1" },
                         }}
                     >
-                        <span className="btn btn-success btn-lg">
+                        <span className="btn btn-danger btn-lg">
                             <span className="glyphicon glyphicon-home"></span>
                             Take Me to Child One
                         </span>
@@ -31,7 +31,7 @@ export default class Two extends React.Component {
                             state: { header: "Hello from Child 2" },
                         }}
                     >
-                        <span className="btn btn-success btn-lg">
+                        <span className="btn btn-danger btn-lg">
                             <span className="glyphicon glyphicon-home"></span>
                             Take Me Child Two
                         </span>

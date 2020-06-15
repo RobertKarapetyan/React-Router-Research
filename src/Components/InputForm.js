@@ -1,9 +1,12 @@
 import React from "react";
+import { Prompt } from "react-router-dom";
 
 export default class Inputform extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {};
+        this.state = {
+            isBlocking: false,
+        };
     }
 
     render() {
@@ -20,8 +23,19 @@ export default class Inputform extends React.Component {
                     event.preventDefault();
                 }}
             >
+                {this.preventUnmount()}
+
                 <label>Name:</label>
-                <input style={{ marginLeft: 10 }} type="text" name="name" />
+                <input
+                    style={{ marginLeft: 10 }}
+                    onChange={(event) => {
+                        this.state.isBlocking = event.target.value.length > 0;
+
+                        this.forceUpdate();
+                    }}
+                    type="text"
+                    name="name"
+                />
 
                 <button
                     style={{ marginLeft: 10 }}
@@ -32,6 +46,19 @@ export default class Inputform extends React.Component {
                     Submit
                 </button>
             </form>
+        );
+
+        return result;
+    }
+
+    preventUnmount() {
+        let result = (
+            <Prompt
+                when={this.state.isBlocking}
+                message={(location) => {
+                    return `Are you sure you want to transition to ${location.pathname}`;
+                }}
+            />
         );
 
         return result;
